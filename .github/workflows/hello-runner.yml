@@ -1,0 +1,23 @@
+name: Hello Runner Test
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 push 될 때 실행
+
+jobs:
+  test-runner:
+    runs-on: ubuntu-latest  # self-hosted로 바꾸면 직접 설정한 runner에서 실행됩니다
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Say hello
+        run: echo "🎉 Hello from GitHub Actions!"
+
+      - name: Show runner info
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "Runner Name: $RUNNER_NAME"
+          echo "Workflow is running on: $(hostname)"
