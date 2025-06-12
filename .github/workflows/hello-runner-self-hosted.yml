@@ -1,0 +1,23 @@
+name: Hello Self-hosted Runner
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-self-hosted:
+    runs-on: self-hosted  # self-hosted로 설정하여 직접 설정한 runner에서 실행됩니다
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Say hello
+        run: echo "👋 Hello from self-hosted runner!"
+
+      - name: Show runner info
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "Runner Name: $RUNNER_NAME"
+          echo "Running on: $(hostname)"
